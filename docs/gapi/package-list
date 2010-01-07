@@ -1,0 +1,8 @@
+DefaultPackage
+grails-app.conf
+grails-app.controllers.com.piragua.buildinfo
+scripts
+test.unit.com.piragua.buildinfo
+unzipped
+unzipped.grails-app.controllers.com.piragua.buildinfo
+unzipped.scripts
