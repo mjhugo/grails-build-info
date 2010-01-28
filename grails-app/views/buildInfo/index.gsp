@@ -37,19 +37,19 @@
         <tr>
             <td>Source Control Revision #</td><td><g:meta name="scm.version"/></td>
         </tr>
-        <g:if test="${g.meta(name:'build.number')}">
+        <g:if test="${g.meta(name:'environment.BUILD_NUMBER')}">
             <tr>
-                <td>Build #</td><td><g:meta name="build.number"/></td>
+                <td>Build #</td><td><g:meta name="environment.BUILD_NUMBER"/></td>
             </tr>
         </g:if>
-        <g:if test="${g.meta(name:'build.number')}">
+        <g:if test="${g.meta(name:'environment.BUILD_ID')}">
             <tr>
-                <td>Build ID</td><td><g:meta name="build.id"/></td>
+                <td>Build ID</td><td><g:meta name="environment.BUILD_ID"/></td>
             </tr>
         </g:if>
-        <g:if test="${g.meta(name:'build.number')}">
+        <g:if test="${g.meta(name:'environment.BUILD_TAG')}">
             <tr>
-                <td>Build Tag</td><td><g:meta name="build.tag"/></td>
+                <td>Build Tag</td><td><g:meta name="environment.BUILD_TAG"/></td>
             </tr>
         </g:if>
     </table>

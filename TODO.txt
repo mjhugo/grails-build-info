@@ -1,0 +1,10 @@
+- make the properties displayed in the build info section configurable:
+	Define a default set of environment variables in a BuildInfoConfig.groovy and allow the user to override them.  
+	e.g. default would be something like: build.info.variables = ['build.date', 'scm.version', 'environment.BUILD_NUMBER', 'environment.BUILD_ID', 'environment.BUILD_TAG']
+	any property written into the application.properties file could be picked up and displayed
+- internationalize the labels?
+- allow for enabling/disabling the sections on the build info page (i.e. don't show plugins)
+- add event hook into _Events.groovy to allow custom properties to be added to application.properties
+- add ability for user to specify templates (or controller/action output?) that get rendered on the page
+- externalize stylesheet to allow css to be overridden
+- script to add stats (ala grails stats) as properties to application.properties?  might be cool...
