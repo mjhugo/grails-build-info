@@ -1,14 +1,8 @@
 eventCreateWarStart = {warname, stagingDir ->
     Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
-        if (System.getProperty ("BUILD_NUMBER")) {
-            entry(key: 'build.number', value: System.getProperty ("BUILD_NUMBER"))
-        }
-        if (System.getProperty ("BUILD_ID")) {
-            entry(key: 'build.id', value: System.getProperty ("BUILD_ID"))
-        }
-        if (System.getProperty ("BUILD_TAG")) {
-            entry(key: 'build.tag', value: System.getProperty ("BUILD_TAG"))
-        }
+		Ant.antProject.properties.findAll({k,v-> k.startsWith('environment')}).each { k,v->
+            entry(key: k, value: v)
+		}
         entry(key: 'scm.version', value: getRevision())
         entry(key: 'build.date', value: new Date())
     }
@@ -22,7 +16,7 @@ def getRevision() {
     }
 
     // try to get revision from Hudson
-    def scmVersion = System.getProperty ("SVN_REVISION")
+    def scmVersion = Ant.antProject.properties."environment.SVN_REVISION"
 
     // if Hudson env variable not found, try file system (for SVN)
     if (!scmVersion) {
