@@ -1,6 +1,6 @@
 eventCreateWarStart = {warname, stagingDir ->
 
-    event("BuildInfoAddPropertiesStart", [])
+    event("BuildInfoAddPropertiesStart", [warname, stagingDir])
 
     Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
 		Ant.antProject.properties.findAll({k,v-> k.startsWith('environment')}).each { k,v->
@@ -10,7 +10,7 @@ eventCreateWarStart = {warname, stagingDir ->
         entry(key: 'build.date', value: new Date())
     }
 
-    event("BuildInfoAddPropertiesEnd", [])
+    event("BuildInfoAddPropertiesEnd", [warname, stagingDir])
 
 }
 

@@ -1,17 +1,17 @@
 <%@ page import="grails.util.Environment" %>
-<h1>Runtime Application Status</h1>
+<h1><g:message code="runtime.app.status"/></h1>
 
 <table>
     <tr>
-        <td>Grails Environment</td><td>${Environment.current}</td>
+        <td><g:message code="grails.env"/></td><td>${Environment.current}</td>
     </tr>
     <tr>
-        <td>App version</td><td><g:meta name="app.version"/></td>
+        <td><g:message code="app.version"/></td><td><g:meta name="app.version"/></td>
     </tr>
     <tr>
-        <td>Grails version</td><td><g:meta name="app.grails.version"/></td>
+        <td><g:message code="app.grails.version"/></td><td><g:meta name="app.grails.version"/></td>
     </tr>
     <tr>
-        <td>Jvm version</td><td>${System.getProperty('java.version')}</td>
+        <td><g:message code="java.version"/></td><td>${System.getProperty('java.version')}</td>
     </tr>
 </table>

@@ -8,13 +8,10 @@ class StatusPageFunctionalTests extends functionaltestplugin.FunctionalTestCase 
         assertStatus 200
 
         // this label is overridden in messages.properties
-        assertContentContains "Source Control Revision #"
-        assertContentContains "Build Date"
-
-        assertContentContains "Grails Environment"
-        assertContentContains Environment.current.toString()
+        assertContentContains "Application Version"
 
         assertContentContains "Grails version"
+        assertContentContains Environment.current.toString()
         assertContentContains "JVM version"
 
     }

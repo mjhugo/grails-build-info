@@ -1,9 +1,12 @@
 package com.piragua.buildinfo
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
+import org.codehaus.groovy.grails.plugins.metadata.GrailsPlugin
 
+
+//@GrailsPlugin(name='build-info', version='1.2')
 class BuildInfoController {
-
+ 
     static final List buildInfoProperties = ['build.date', 'scm.version', 'environment.BUILD_NUMBER', 'environment.BUILD_ID', 'environment.BUILD_TAG'] 
 
     def index = { 
@@ -17,7 +20,6 @@ class BuildInfoController {
         }
 
         Map model = [buildInfoProperties: customProperties]
-
         render(view:'index', model:model)
     }
 }
