@@ -28,58 +28,12 @@
 
 </head>
 <body>
-<div id="pageBody">
-    <h1>Build Info</h1>
-    <table>
-        <tr>
-            <td>Build Date</td><td><g:meta name="build.date"/></td>
-        </tr>
-        <tr>
-            <td>Source Control Revision #</td><td><g:meta name="scm.version"/></td>
-        </tr>
-        <g:if test="${g.meta(name:'environment.BUILD_NUMBER')}">
-            <tr>
-                <td>Build #</td><td><g:meta name="environment.BUILD_NUMBER"/></td>
-            </tr>
-        </g:if>
-        <g:if test="${g.meta(name:'environment.BUILD_ID')}">
-            <tr>
-                <td>Build ID</td><td><g:meta name="environment.BUILD_ID"/></td>
-            </tr>
-        </g:if>
-        <g:if test="${g.meta(name:'environment.BUILD_TAG')}">
-            <tr>
-                <td>Build Tag</td><td><g:meta name="environment.BUILD_TAG"/></td>
-            </tr>
-        </g:if>
-    </table>
-    <h1>Runtime Application Status</h1>
-    <table>
-        <tr>
-            <td>Grails Environment</td><td>${System.getProperty('grails.env')}</td>
-        </tr>
-        <tr>
-            <td>App version</td><td><g:meta name="app.version"/></td>
-        </tr>
-        <tr>
-            <td>Grails version</td><td><g:meta name="app.grails.version"/></td>
-        </tr>
-        <tr>
-            <td>Jvm version</td><td>${System.getProperty('java.version')}</td>
-        </tr>
-    </table>
-    <h1>Installed Plugins</h1>
-    <table>
-        <g:set var="pluginManager"
-                value="${applicationContext.getBean('pluginManager')}"></g:set>
+<div id="pageBody"> 
+    <g:render template="/buildInfo/buildInfo" plugin="buildInfo"/>
 
-        <g:each status="i" var="plugin" in="${pluginManager.allPlugins.sort({it.name.toUpperCase()})}">
-            <tr>
-                <td>${plugin.name}</td><td>${plugin.version}</td>
-            </tr>
-        </g:each>
+    <g:render template="/buildInfo/runtimeStatus" plugin="buildInfo"/>
 
-    </table>
+    <g:render template="/buildInfo/installedPlugins" plugin="buildInfo"/>
 </div>
 </body>
 </html>

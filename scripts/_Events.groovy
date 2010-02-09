@@ -1,4 +1,7 @@
 eventCreateWarStart = {warname, stagingDir ->
+
+    event("BuildInfoAddPropertiesStart", [])
+
     Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
 		Ant.antProject.properties.findAll({k,v-> k.startsWith('environment')}).each { k,v->
             entry(key: k, value: v)
@@ -6,6 +9,9 @@ eventCreateWarStart = {warname, stagingDir ->
         entry(key: 'scm.version', value: getRevision())
         entry(key: 'build.date', value: new Date())
     }
+
+    event("BuildInfoAddPropertiesEnd", [])
+
 }
 
 def getRevision() {

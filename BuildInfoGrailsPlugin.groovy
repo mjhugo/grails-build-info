@@ -1,6 +1,11 @@
+import org.springframework.core.io.FileSystemResource
+import org.codehaus.groovy.grails.commons.ControllerArtefactHandler
+import org.codehaus.groovy.grails.commons.TagLibArtefactHandler
+import org.codehaus.groovy.grails.commons.ServiceArtefactHandler
+
 class BuildInfoGrailsPlugin {
     // the plugin version
-    def version = "1.1"
+    def version = "1.2"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1.1 > *" //tested with 1.1.1 and higher, may or may not work for older versions of Grails
     // the other plugins this plugin depends on
@@ -31,5 +36,44 @@ If Hudson is used to build the war file the following Hudson environment variabl
 
     // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/build-info"
+//
+//    def watchedResources = ["file:${getPluginLocation()}/web-app/**",
+//            "file:${getPluginLocation()}/grails-app/controllers/**/*Controller.groovy",
+//            "file:${getPluginLocation()}/grails-app/services/**/*Service.groovy",
+//            "file:${getPluginLocation()}/grails-app/taglib/**/*TagLib.groovy"
+//    ]
+//
+//    def onChange = { event ->
+//        println event
+//        if (!isBasePlugin()) {
+//            if (event.source instanceof FileSystemResource && event.source?.path?.contains('web-app')) {
+//                def ant = new AntBuilder()
+//                ant.copy(todir: "./web-app/plugins/build-info-${event.plugin.version}") {
+//                    fileset(dir: "${getPluginLocation()}/web-app")
+//                }
+//            } else if (application.isArtefactOfType(ControllerArtefactHandler.TYPE, event.source)) {
+//                manager?.getGrailsPlugin("controllers")?.notifyOfEvent(event)
+//                // this injects the tag library namespaces back into the controller after it is reloaded
+//                manager?.getGrailsPlugin("groovyPages")?.notifyOfEvent(event)
+//            } else if (application.isArtefactOfType(TagLibArtefactHandler.TYPE, event.source)) {
+//                manager?.getGrailsPlugin("groovyPages")?.notifyOfEvent(event)
+//            } else if (application.isArtefactOfType(ServiceArtefactHandler.TYPE, event.source)) {
+//                manager?.getGrailsPlugin("services")?.notifyOfEvent(event)
+//            }
+//        }
+//        // watching is modified and reloaded. The event contains: event.source,
+//        // event.application, event.manager, event.ctx, and event.plugin.
+//    }
+//
+//    ConfigObject getBuildConfig() {
+//        GroovyClassLoader classLoader = new GroovyClassLoader(getClass().getClassLoader())
+//        ConfigObject buildConfig = new ConfigSlurper().parse(classLoader.loadClass('BuildConfig'))
+//        return buildConfig
+//    }
+//
+//    String getPluginLocation() {
+//        return getBuildConfig()?.grails?.plugin?.location?.'build-info'
+//    }
+    
 
 }
