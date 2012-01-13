@@ -5,7 +5,7 @@ import org.codehaus.groovy.grails.commons.ServiceArtefactHandler
 
 class BuildInfoGrailsPlugin {
     // the plugin version
-    def version = "1.2"
+    def version = "1.2.1"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1.1 > *" //tested with 1.1.1 and higher, may or may not work for older versions of Grails
     // the other plugins this plugin depends on
@@ -32,6 +32,8 @@ If Hudson is used to build the war file the following Hudson environment variabl
 * BUILD_ID
 * BUILD_TAG
 * SVN_REVISION
+* GIT_COMMIT
+* GIT_BRANCH
 '''
 
     // URL to the plugin's documentation
