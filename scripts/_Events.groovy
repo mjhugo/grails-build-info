@@ -1,4 +1,7 @@
 eventCreateWarStart = {warname, stagingDir ->
+
+    event("BuildInfoAddPropertiesStart", [warname, stagingDir])
+
     Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
 		Ant.antProject.properties.findAll({k,v-> k.startsWith('environment')}).each { k,v->
             entry(key: k, value: v)
@@ -6,6 +9,9 @@ eventCreateWarStart = {warname, stagingDir ->
         entry(key: 'scm.version', value: getRevision())
         entry(key: 'build.date', value: new Date())
     }
+
+    event("BuildInfoAddPropertiesEnd", [warname, stagingDir])
+
 }
 
 def getRevision() {
@@ -17,6 +23,10 @@ def getRevision() {
 
     // try to get revision from Hudson
     def scmVersion = Ant.antProject.properties."environment.SVN_REVISION"
+
+    if (!scmVersion) {
+		scmVersion = Ant.antProject.properties."environment.GIT_COMMIT"
+	}
 
     // if Hudson env variable not found, try file system (for SVN)
     if (!scmVersion) {

@@ -8,3 +8,4 @@
 - add ability for user to specify templates (or controller/action output?) that get rendered on the page
 - externalize stylesheet to allow css to be overridden
 - script to add stats (ala grails stats) as properties to application.properties?  might be cool...
+- show config variables
