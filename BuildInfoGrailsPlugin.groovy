@@ -5,7 +5,7 @@ import org.codehaus.groovy.grails.commons.ServiceArtefactHandler
 
 class BuildInfoGrailsPlugin {
     // the plugin version
-    def version = "1.2.2"
+    def version = "1.2.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.1.1 > *" //tested with 1.1.1 and higher, may or may not work for older versions of Grails
     // the other plugins this plugin depends on
@@ -27,7 +27,7 @@ Provides a controller/view that display basic information about the war file inc
 * grails environment (currently running, not necessarily the environment used to build the war file)
 * plugins installed (and which version)
 
-If Hudson is used to build the war file the following Hudson environment variables are also displayed:
+If Hudson/Jenkins is used to build the war file the following Hudson environment variables are also displayed:
 * BUILD_NUMBER
 * BUILD_ID
 * BUILD_TAG
