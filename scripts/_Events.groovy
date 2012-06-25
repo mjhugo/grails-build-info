@@ -28,6 +28,20 @@ def getRevision() {
 		scmVersion = Ant.antProject.properties."environment.GIT_COMMIT"
 	}
 
+    // maybe a local git?
+    if (!scmVersion) {
+        try {
+            def command = """git rev-parse HEAD"""
+            def proc = command.execute()
+            proc.waitFor()
+            if (proc.exitValue() == 0) {
+                scmVersion = proc.in.text
+            }
+        } catch (IOException e) {
+            // oh well
+        }
+    }
+
     // if Hudson/Jenkins env variable not found, try file system (for SVN)
     if (!scmVersion) {
         File entries = new File(basedir, '.svn/entries')
