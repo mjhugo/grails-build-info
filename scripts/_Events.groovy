@@ -42,6 +42,10 @@ def getRevision() {
         }
     }
 
+    if (!scmVersion) {
+        scmVersion = getRevisionFromSvnCli()
+    }
+
     // if Hudson/Jenkins env variable not found, try file system (for SVN)
     if (!scmVersion) {
         File entries = new File(basedir, '.svn/entries')
@@ -51,4 +55,20 @@ def getRevision() {
     }
 
     return scmVersion ?: 'UNKNOWN'
+}
+
+private String getRevisionFromSvnCli() {
+    try {
+        def command = 'svn info --xml'
+        def proc = command.execute()
+        def out = new ByteArrayOutputStream()
+        proc.consumeProcessOutput(out, null) //prevent blocking in Windows due to a full output buffer
+        int exitVal = proc.waitFor()
+        if (exitVal == 0) {
+            def slurper = new XmlSlurper().parseText(out.toString())
+            return slurper.entry.@revision
+        }
+    } catch (ignore) {
+        return null
+    }
 }
