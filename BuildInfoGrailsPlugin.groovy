@@ -15,7 +15,6 @@ class BuildInfoGrailsPlugin {
             "grails-app/views/error.gsp"
     ]
 
-    // TODO Fill in these fields
     def author = "Mike Hugo"
     def authorEmail = "mike@piragua.com"
     def title = "Build Info"
@@ -36,8 +35,12 @@ If Hudson/Jenkins is used to build the war file the following Hudson environment
 * GIT_BRANCH
 '''
 
-    // URL to the plugin's documentation
     def documentation = "http://grails.org/plugin/build-info"
+    def license = "APACHE"
+    def developers = [ [ name: "Ronny Løvtangen", email: "ronny@lovtangen.com" ]]
+    def issueManagement = [ system: "Github", url: "https://github.com/mjhugo/grails-build-info/issues" ]
+    def scm = [ url: "https://github.com/mjhugo/grails-build-info" ]
+
 //
 //    def watchedResources = ["file:${getPluginLocation()}/web-app/**",
 //            "file:${getPluginLocation()}/grails-app/controllers/**/*Controller.groovy",
