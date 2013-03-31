@@ -1,5 +1,8 @@
-target/
+/target/
 .idea/
 *.iml
+/out/
 atlassian-ide-plugin.xml
-plugin.xml
+/plugin.xml
+/stacktrace.log
+/web-app/
