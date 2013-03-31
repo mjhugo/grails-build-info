@@ -6,3 +6,4 @@ atlassian-ide-plugin.xml
 /plugin.xml
 /stacktrace.log
 /web-app/
+/grails-build-info-*.zip*
