@@ -1,8 +1,9 @@
-# Overview
+## Overview
 
 Provides a controller/view that display basic information about the war file including the
 
 - date/time the war file was built
+- Source Control Revision Number (Git and Subversion)
 - application version number
 - grails version
 - grails environment (currently running, not necessarily the environment used to build the war file)
@@ -15,6 +16,22 @@ If Hudson is used to build the war file the following Hudson environment variabl
 - BUILD_TAG
 - SVN_REVISION
 
-# Security
+## Security
 
 Note that the plugin does not apply any security restrictions to the BuildInfo controller - __make sure to restrict access to this page__ if you do not want the information to be publicly available.
+
+## Changelog
+
+### 1.2.4
+
+* Subversion 1.7 support
+
+### 1.2.3
+
+### 1.2.2
+
+### 1.2.1
+
+### 1.1
+
+### 1.0
