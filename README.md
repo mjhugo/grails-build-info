@@ -9,12 +9,14 @@ Provides a controller/view that display basic information about the war file inc
 - grails environment (currently running, not necessarily the environment used to build the war file)
 - plugins installed (and which version)
 
-If Hudson is used to build the war file the following Hudson environment variables are also displayed:
+If Hudson/Jenkins is used to build the war file the following Hudson environment variables are also displayed:
 
 - BUILD_NUMBER
 - BUILD_ID
 - BUILD_TAG
 - SVN_REVISION
+- GIT_COMMIT
+- GIT_BRANCH
 
 ## Security
 

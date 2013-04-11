@@ -21,6 +21,7 @@ class BuildInfoGrailsPlugin {
     def description = '''
 Provides a controller/view that display basic information about the war file including the
 * date/time the war file was built
+* Source Control Revision Number (Git and Subversion)
 * application version number
 * grails version
 * grails environment (currently running, not necessarily the environment used to build the war file)
