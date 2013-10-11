@@ -1,4 +1,4 @@
-package com.piragua.buildinfo
+package grails.plugin.buildinfo
 
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 

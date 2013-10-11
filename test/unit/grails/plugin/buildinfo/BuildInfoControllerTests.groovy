@@ -1,4 +1,4 @@
-package com.piragua.buildinfo
+package grails.plugin.buildinfo
 
 import grails.test.ControllerUnitTestCase
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
