@@ -2,16 +2,25 @@ eventCreateWarStart = {warname, stagingDir ->
 
     event("BuildInfoAddPropertiesStart", [warname, stagingDir])
 
-    Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
-		Ant.antProject.properties.findAll({k,v-> k.startsWith('environment')}).each { k,v->
-            entry(key: k, value: v)
-		}
-        entry(key: 'scm.version', value: getRevision())
-        entry(key: 'build.date', value: new Date())
+    def properties = [:]
+    Ant.antProject.properties.findAll({k,v-> k.startsWith('environment')}).each { k,v->
+        properties[k] = v
     }
+    properties['scm.version'] = getRevision()
+    properties['build.date'] = new Date()
+
+    writeProperties(properties)
 
     event("BuildInfoAddPropertiesEnd", [warname, stagingDir])
 
+}
+
+private void writeProperties(Map properties) {
+    Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
+        properties.each { k,v->
+            entry(key: k, value: v)
+        }
+    }
 }
 
 def getRevision() {
