@@ -24,6 +24,10 @@ Note that the plugin does not apply any security restrictions to the BuildInfo c
 
 ## Changelog
 
+### 1.2.5
+
+* Package name changed to grails.plugin.buildinfo. See issue #7
+
 ### 1.2.4
 
 * Subversion 1.7 support
