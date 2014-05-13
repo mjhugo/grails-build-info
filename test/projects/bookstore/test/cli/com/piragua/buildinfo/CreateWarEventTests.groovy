@@ -1,6 +1,8 @@
 package com.piragua.buildinfo
 
 import grails.test.AbstractCliTestCase
+
+import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 
 class CreateWarEventTests extends AbstractCliTestCase {
@@ -11,9 +13,9 @@ class CreateWarEventTests extends AbstractCliTestCase {
         assertEquals 0, waitForProcess()
 
         verifyHeader()
-        
+
         Properties props = new Properties()
-        props.load(new ZipFile('target/bookstore-0.1.war').getInputStream('WEB-INF/classes/application.properties'))
+        props.load(new ZipFile('target/bookstore-0.1.war').getInputStream(new ZipEntry('WEB-INF/classes/application.properties')))
 
         assertNotNull props['scm.version']
         assertNotNull props['build.date']
