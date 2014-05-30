@@ -7,3 +7,4 @@ atlassian-ide-plugin.xml
 /stacktrace.log
 /web-app/
 /grails-build-info-*.zip*
+/test/projects/bookstore/target/
