@@ -1,7 +1,6 @@
 package com.piragua.buildinfo
 
 import grails.util.Environment
-import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 class ControllerReloadFunctionalTests extends functionaltestplugin.FunctionalTestCase {
 

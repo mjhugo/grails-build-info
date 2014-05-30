@@ -7,7 +7,7 @@ class BuildInfoGrailsPlugin {
     // the plugin version
     def version = "1.2.6-SNAPSHOT"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.1.1 > *" //tested with 1.1.1 and higher, may or may not work for older versions of Grails
+    def grailsVersion = "2.0 > *"
     // the other plugins this plugin depends on
     def dependsOn = [:]
     // resources that are excluded from plugin packaging
