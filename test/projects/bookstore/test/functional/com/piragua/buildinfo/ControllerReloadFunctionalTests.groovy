@@ -1,10 +1,7 @@
 package com.piragua.buildinfo
 
-import grails.util.Environment
 
 class ControllerReloadFunctionalTests extends functionaltestplugin.FunctionalTestCase {
-
-    def grailsApplication
 
     void testBuildInfoPage() {
         get('/buildInfo')
