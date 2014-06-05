@@ -9,14 +9,14 @@ eventCreateWarStart = {warname, stagingDir ->
     properties['scm.version'] = getRevision()
     properties['build.date'] = new Date()
 
-    writeProperties(properties)
+    writeProperties(properties, "${stagingDir}/WEB-INF/classes/application.properties")
 
     event("BuildInfoAddPropertiesEnd", [warname, stagingDir])
 
 }
 
-private void writeProperties(Map properties) {
-    Ant.propertyfile(file: "${stagingDir}/WEB-INF/classes/application.properties") {
+private void writeProperties(Map properties, String propertyFile) {
+    Ant.propertyfile(file: propertyFile) {
         properties.each { k,v->
             entry(key: k, value: v)
         }
