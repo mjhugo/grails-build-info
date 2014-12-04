@@ -22,21 +22,33 @@ class BuildInfoController {
             customProperties += buildInfoConfig.properties.add
         }
 
+        def buildInfo = [:]
+        customProperties.findAll { grailsApplication?.metadata[it] }.each {
+            buildInfo."${it}" = grailsApplication?.metadata[it]
+        }
+
+        def installedPlugins = [:]
+        pluginManager?.allPlugins?.sort({it.name.toUpperCase()}).each {
+            installedPlugins."${it.name}" = it.version
+        }
+
+        def runtimeEnvironment = [
+            environment: Environment.current.name,
+            'app.version': grailsApplication?.metadata['app.version'],
+            'app.grails.version': grailsApplication?.metadata['app.grails.version'],
+            'java.version': System.getProperty('java.version')
+        ]
+
         Map model = [
-                     buildInfoProperties: customProperties,
-                     installedPlugins: pluginManager?.allPlugins?.sort({it.name.toUpperCase()}).collect { [name: it.name, version: it.version] },
-                     runtimeEnvironment: [
-                          environment: Environment.current.name,
-                          'app.version': grailsApplication?.metadata['app.version'],
-                          'app.grails.version': grailsApplication?.metadata['app.grails.version'],
-                          'java.version': System.getProperty('java.version')
-                        ]
-                     ]
+                buildInfoProperties: buildInfo,
+                installedPlugins: installedPlugins,
+                runtimeEnvironment: runtimeEnvironment
+        ]
 
         withFormat {
-          html { render(view: 'index', model: model) }
-          json { render model as JSON }
-          xml { render model as XML }
+            html { render(view: 'index', model: model) }
+            json { render model as JSON }
+            xml { render model as XML }
         }
     }
 }
