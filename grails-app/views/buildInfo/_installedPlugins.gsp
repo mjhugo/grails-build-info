@@ -1,9 +1,9 @@
 <h1>Installed Plugins</h1>
 
 <table>
-    <g:each status="i" var="plugin" in="${installedPlugins}">
+    <g:each status="i" var="key, value" in="${installedPlugins}">
         <tr>
-            <td>${plugin.name}</td><td>${plugin.version}</td>
+            <td>${key}</td><td>${value}</td>
         </tr>
     </g:each>
 </table>
