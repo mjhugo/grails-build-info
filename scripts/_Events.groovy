@@ -34,8 +34,8 @@ def getRevision() {
     def scmVersion = Ant.antProject.properties."environment.SVN_REVISION"
 
     if (!scmVersion) {
-		scmVersion = Ant.antProject.properties."environment.GIT_COMMIT"
-	}
+        scmVersion = Ant.antProject.properties."environment.GIT_COMMIT"
+    }
 
     // maybe a local git?
     if (!scmVersion) {
@@ -58,8 +58,8 @@ def getRevision() {
     // if Hudson/Jenkins env variable not found, try file system (for SVN)
     if (!scmVersion) {
         File entries = new File(basedir, '.svn/entries')
-  		if (entries.exists() && entries.text.split('\n').length>3) {
-	            scmVersion = entries.text.split('\n')[3].trim()
+        if (entries.exists() && entries.text.split('\n').length>3) {
+            scmVersion = entries.text.split('\n')[3].trim()
         }
     }
 
