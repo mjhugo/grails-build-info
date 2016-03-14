@@ -1,6 +1,6 @@
 ## Overview
 
-Provides a controller/view that display basic information about the war file including the
+Provides a controller(BuildInfoController)/view that displays basic information about the war file including:
 
 - date/time the war file was built
 - Source Control Revision Number (Git and Subversion)
@@ -8,6 +8,10 @@ Provides a controller/view that display basic information about the war file inc
 - grails version
 - grails environment (currently running, not necessarily the environment used to build the war file)
 - plugins installed (and which version)
+
+The information can be viewed by opening index action of the controller i.e. www.your-app.com/buildInfo
+
+Also please note that build information(i.e. date/time the war file was built and SCM version number) will be available only when you are building the application by creating `war` file and deploying it. It will not be available when you are building it through `grails run-app`.
 
 If Hudson/Jenkins is used to build the war file the following Hudson environment variables are also displayed:
 
@@ -21,6 +25,13 @@ If Hudson/Jenkins is used to build the war file the following Hudson environment
 ## Security
 
 Note that the plugin does not apply any security restrictions to the BuildInfo controller - __make sure to restrict access to this page__ if you do not want the information to be publicly available.
+
+It can be easily restricted if you are using Spring Security. All that is needed, is to add static rules in Config.groovy.
+Here is the sample code to ensure that the url can be accessible only by users who have 'ADMIN' role:
+`grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/buildInfo/**'       : ['hasRole("ADMIN")'],
+]`
+
 
 ## Changelog
 
