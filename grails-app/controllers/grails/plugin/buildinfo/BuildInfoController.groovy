@@ -36,7 +36,8 @@ class BuildInfoController {
             environment: Environment.current.name,
             'app.version': grailsApplication?.metadata['app.version'],
             'app.grails.version': grailsApplication?.metadata['app.grails.version'],
-            'java.version': System.getProperty('java.version')
+            'java.version': System.getProperty('java.version'),
+            'host': getHostName()
         ]
 
         Map model = [
@@ -50,5 +51,16 @@ class BuildInfoController {
             json { render model as JSON }
             xml { render model as XML }
         }
+    }
+    
+    private String getHostName() {
+        String name;
+        try {
+            final InetAddress addr = InetAddress.getLocalHost();
+            name = addr.getHostName();
+        } catch (UnknownHostException ignore) {
+            name = null;
+        }
+        return name;
     }
 }
