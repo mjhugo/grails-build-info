@@ -13,4 +13,7 @@
     <tr>
         <td><g:message code="java.version"/></td><td>${runtimeEnvironment.'java.version'}</td>
     </tr>
+    <tr>
+        <td><g:message code="host.name"/></td><td>${runtimeEnvironment.host}</td>
+    </tr>
 </table>
